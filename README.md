@@ -1,24 +1,63 @@
-# README
+# Rails Project App - Collectibles Marketplace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Heroku Deployment Link:**
 
-Things you may want to cover:
+**Github Repo Link:** 
 
-* Ruby version
+**Identification of the problem you are trying to solve by building this particular marketplace app**
 
-* System dependencies
 
-* Configuration
+**Why is it a problem that needs solving?**
 
-* Database creation
 
-* Database initialization
+**Collectibles Marketplace Description**
+- **Purpose**
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+- **Functionality / features**
 
-* Deployment instructions
 
-* ...
+- **Sitemap**
+
+
+- **Screenshots**
+
+
+- **Target audience**
+
+
+- **Tech stack (e.g. html, css, deployment platform, etc)**
+
+
+**User stories for your app**
+
+
+
+**Wireframes for your app**
+
+
+
+**An ERD for your app**
+
+
+
+**Explain the different high-level components (abstractions) in your app**
+
+
+
+**Detail any third party services that your app will use**
+
+
+
+**Describe your projects models in terms of the relationships (active record associations) they have with each other**
+
+
+
+**Discuss the database relations to be implemented in your application**
+
+
+
+**Provide your database schema design**
+
+
+**Describe the way tasks are allocated and tracked in your project**
