@@ -2,7 +2,7 @@
 
 **Heroku Deployment Link:**
 
-**Github Repo Link:** 
+**Github Repo Link:** https://github.com/jamesxu1996/collectibles
 
 **Identification of the problem you are trying to solve by building this particular marketplace app**
 
