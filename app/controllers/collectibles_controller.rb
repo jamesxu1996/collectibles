@@ -9,5 +9,13 @@ class CollectiblesController < ApplicationController
 
   def restricted
   end
-  
+
+  def new
+  end
+
+  def edit
+  end
+
+
+
 end
