@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'listings/index'
+  get 'listings/show'
+  get 'listings/new'
+  get 'listings/edit'
+  get 'orders/index'
+  get 'orders/show'
+  get 'orders/new'
+  get 'orders/edit'
+  get 'profiles/index'
+  get 'profiles/show'
+  get 'profiles/new'
+  get 'profiles/edit'
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users
   resources :profiles, :reviews, :orders, :listings, :users
