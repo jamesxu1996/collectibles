@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :collectibles, :profiles, :reviews, :orders, :items
+  resources :collectibles, :profiles, :reviews, :orders, :listings, :users
   root to: "collectibles#home"
  
   get "/restricted", to: "collectibles#restricted"

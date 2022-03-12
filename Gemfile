@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
+  gem 'ratyrate'
 end
 
 group :test do
