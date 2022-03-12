@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users
   resources :collectibles, :profiles, :reviews, :orders, :listings, :users
   root to: "collectibles#home"

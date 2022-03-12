@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_07_213126) do
+ActiveRecord::Schema.define(version: 2022_03_12_111424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "average_caches", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
+  end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.date "dob"
+    t.string "phone"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.bigint "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
