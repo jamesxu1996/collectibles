@@ -1,2 +1,6 @@
 <h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+<ul>
+    <% @profiles.each do |profile| %>
+        <li><%= link_to profile.name, profile_path(profile) %></li>
+    <% end %>
+</ul>
