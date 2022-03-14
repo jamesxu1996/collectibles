@@ -1,12 +1,12 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, 
+  before_action :authenticate_user!, :current_listing, only: [:show, :edit, :update, :destroy]
 
   def index
     @listings = Listing.all
   end
 
   def show
-    @listing = Listing.find(params[:id])
+    
   end
 
   def new
@@ -20,18 +20,16 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = Listing.find(params[:id])
+    
   end
 
   def update
-    @listing = Listing.find(params[:id])
     @listing.update(listing_params)
 
     redirect_to listing_path(@listing)
   end
 
   def destroy
-    @listing = Listing.find(params[:id])
     @listing.destroy
 
     redirect_to listings_path
@@ -42,4 +40,10 @@ class ListingsController < ApplicationController
   #whitelisting parameters 
   def listing_params
     params.require(:listing).permit(:name, :price, :description, :quantity, :category)
+  end
+
+  #set listing search to avoid multiple search calls for controller actions
+  def current_listing
+    @listing = Listing.find(params[:id])
+  end
 end
