@@ -1,2 +1,10 @@
-<h1>Listings#edit</h1>
-<p>Find me in app/views/listings/edit.html.erb</p>
+<h1>Edit Listing</h1>
+
+<%= form_with model: @listing do |form| %>
+    <%= form.text_field :name, placeholder: "name" %>
+    <%= form.text_field :price, placeholder: "price" %>
+    <%= form.text_field :description, placeholder: "enter a description about your listing..." %>
+    <%= form.text_field :quantity, placeholder: "quantity" %>
+    <%= form.text_field :category, placeholder: "category" %>
+    <%= form.submit%>
+<% end %>
