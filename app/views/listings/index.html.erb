@@ -1,7 +1,13 @@
 <h1>Listings#index</h1>
-<ul>
+
+<table>
     <% @listings.each do |listing| %>
-        <li><%= link_to listing.name, listing_path(listing) %></li>
+    <tr>
+        <td><%= link_to listing.name, listing_path(listing) %></td>
+        <td><%= button_to "Edit", edit_listing_path(listing), method: "get" %></td>
+        <td><%= button_to "Remove", listing_path(listing), method: "delete", data: {confirm: "Please confirm"}  %></td>
     <% end %>
-</ul>
+</table>
+
+<%= link_to "Add a new listing", new_listing_path%>
 
