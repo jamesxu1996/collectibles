@@ -1,7 +1,8 @@
 <h1><%= @listing.name %></h1>
-<h4><%=@listing.price %></h4>
-<h4><%= @listing.description %></h4>
-<h4><%= @listing.quantity %></h4>
-<h4><%= @listing.category %></h4>
+<p><%=@listing.price %></p>
+<p><%= @listing.quantity %></p>
+<p><%= @listing.category %></p>
+<p><%= @listing.description %></p>
+
 
 <%= link_to 'Remove', @listing, method: :delete, data: {confirm: "Please confirm"} %>
