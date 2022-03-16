@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
-    @listings = Listing.all
+    @listings = Listing.order(:name).page(params[:id])
   end
 
   # GET /listings/1
@@ -19,8 +19,12 @@ class ListingsController < ApplicationController
   # POST /listings
   def create
     listing = Listing.create(listing_params)
-
-    redirect_to listings_path(listing)
+    if listing.save
+      flash.notice = "Listing has been successfully created!"
+      redirect_to listings_path(listing)
+    else
+      flash.alert = "Listing not created!"
+    end
   end
 
   # GET /listings/1/edit
@@ -33,7 +37,7 @@ class ListingsController < ApplicationController
   def update
     @listing.update(listing_params)
 
-    redirect_to listing_path(@listing)
+    redirect_to listings_path(@listing)
   end
 
   # DELETE /listings/1

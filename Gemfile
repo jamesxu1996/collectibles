@@ -50,7 +50,7 @@ group :development do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'ratyrate'
-  gem 'will_paginate'
+  gem 'kaminari'
 end
 
 group :test do

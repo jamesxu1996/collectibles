@@ -8,6 +8,6 @@
         <td><%= button_to "Remove", listing_path(listing), method: "delete", data: {confirm: "Please confirm"}  %></td>
     <% end %>
 </table>
-
 <%= link_to "Add a new listing", new_listing_path%>
 
+<%= paginate @listings %>
