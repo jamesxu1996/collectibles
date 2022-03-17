@@ -1,15 +1,28 @@
-<div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-outline-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
-</div>
+<div class="d-flex min-vh-100" lc-helper="background" style="background:url(https://images.unsplash.com/photo-1466584241662-8cb021032c1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80)  center / cover no-repeat; background-color:#444; background-blend-mode: overlay;">
+	<div class="align-self-center text-center text-light col-md-8 offset-md-2">
+    <div class="lc-block mb-4">
+			<div editable="rich">
+				<h1 class="display-1 fw-bolder">The Place To Be For Collectors</h1>
+			</div>
+		</div>
 
-<div class="row">
-  <div class=col>
-    <%= link_to "Listings", listings_url, method: "get", class: "btn btn-outline-primary btn-sm" %>
-  </div>
+		<div class="lc-block">
+			<div editable="rich">
+				<p class="lead">Find what you like, when you like.</p>
+
+				<p class="lead">Start your collection now.</p>
+
+			</div>
+		</div>
+
+		<div class="lc-block">
+			<svg onclick="if (!document.querySelector('body').classList.contains('livecanvas-is-editing') ) this.closest('section').nextElementSibling.scrollIntoView({ behavior: 'smooth'  });" width="4em" height="4em" viewBox="0 0 16 16" class="text-light" fill="currentColor" xmlns="http://www.w3.org/2000/svg" lc-helper="svg-icon">
+				<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+				<path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"></path>
+			</svg>
+
+			<!-- for Safari support only, remove if you want  -->
+			<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://unpkg.com/smoothscroll-polyfill/dist/smoothscroll.min.js"></script>
+		</div>
+	</div>
 </div>
