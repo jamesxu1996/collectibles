@@ -51,6 +51,7 @@ group :development do
   gem 'rails-controller-testing'
   gem 'ratyrate'
   gem 'kaminari'
+  gem 'activerecord-reset-pk-sequence'
 end
 
 group :test do

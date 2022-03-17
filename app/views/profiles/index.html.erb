@@ -1,6 +1,5 @@
 <h1>Profiles#index</h1>
-<ul>
+
     <% @profiles.each do |profile| %>
-        <li><%= link_to profile.name, profile_path(profile) %></li>
+        <%= link_to profile.name, profile_path(profile) %>
     <% end %>
-</ul>

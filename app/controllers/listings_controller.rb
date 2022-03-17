@@ -3,7 +3,8 @@ class ListingsController < ApplicationController
 
   # GET /listings
   def index
-    @listings = Listing.order(:name).page(params[:id])
+    @listings = Listing.all
+    @listings = Kaminari.paginate_array(@listings).page(params[:page]).per(10)
   end
 
   # GET /listings/1
@@ -36,8 +37,12 @@ class ListingsController < ApplicationController
   # PUT /listings/1
   def update
     @listing.update(listing_params)
-
-    redirect_to listings_path(@listing)
+    if @listing.save
+      flash.notice = "Listing has been successfully updated!"
+      redirect_to listings_path(@listing)
+    else
+      flash.alert = "Listing not updated!"
+    end
   end
 
   # DELETE /listings/1
