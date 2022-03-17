@@ -21,10 +21,10 @@ class ListingsController < ApplicationController
   def create
     listing = Listing.create(listing_params)
     if listing.save
-      flash.notice = "Listing has been successfully created!"
+      flash[:success] = "Listing has been successfully created!"
       redirect_to listings_path(listing)
     else
-      flash.alert = "Listing not created!"
+      flash[:alert] = "Listing not created!"
     end
   end
 
@@ -38,10 +38,10 @@ class ListingsController < ApplicationController
   def update
     @listing.update(listing_params)
     if @listing.save
-      flash.notice = "Listing has been successfully updated!"
+      flash_class[:success] = "Listing has been successfully updated!"
       redirect_to listings_path(@listing)
     else
-      flash.alert = "Listing not updated!"
+      flash[:alert] = "Listing not updated!"
     end
   end
 
@@ -63,4 +63,7 @@ class ListingsController < ApplicationController
   def current_listing
     @listing = Listing.find(params[:id])
   end
+
+  #authorising
+
 end
