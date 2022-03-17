@@ -1,13 +1,22 @@
 <h1>Listings#index</h1>
 
-<table>
+<div class="container">
     <% @listings.each do |listing| %>
-    <tr>
-        <td><%= link_to listing.name, listing_path(listing) %></td>
-        <td><%= button_to "Edit", edit_listing_path(listing), method: "get" %></td>
-        <td><%= button_to "Remove", listing_path(listing), method: "delete", data: {confirm: "Please confirm"}  %></td>
+        <div class=row>
+            <div class="col">
+                <%= link_to listing.name, listing_path(listing) %>
+            </div>
+            <div class="col">
+                <%= link_to "Edit", edit_listing_path(listing), method: "get", class: "btn btn-outline-primary btn-sm" %>
+            </div>
+            <div class="col">
+                <%= link_to "Remove", listing_path(listing), method: "delete", data: {confirm: "Please confirm"}, class: "btn btn-outline-danger btn-sm" %>
+            </div>
+        </div>
     <% end %>
-</table>
-<%= link_to "Add a new listing", new_listing_path%>
+    <div class=row>
+        <%= link_to "Add a new listing", new_listing_path, class: "btn btn-outline-primary btn-sm" %>
+    </div>
+</div>
 
 <%= paginate @listings %>
