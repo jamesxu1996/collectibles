@@ -60,7 +60,7 @@ class ListingsController < ApplicationController
 
   #whitelisting parameters 
   def listing_params
-    params.require(:listing).permit(:name, :price, :description, :quantity, :category)
+    params.require(:listing).permit(:name, :price, :category_id, :description, :quantity)
   end
 
   #set listing search callback to avoid multiple search calls for controller actions
@@ -68,6 +68,10 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
-  #authorising
-
+  #set form variables to avoid multiple search calls
+  def set_form_vars
+    @categories = Category.all
+    @features = Feature.all
+    @conditions = Listing.conditions.keys
+  end
 end

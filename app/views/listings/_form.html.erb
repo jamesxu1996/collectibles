@@ -1,25 +1,61 @@
-<%= form_with model: @listing do |form| %>
-    <div>
-        <%= form.text_field :name, placeholder: "name" %>
-    </div>
+<%= form_with model: @listing, local: true do |f| %>
 
-    <div>
-        <%= form.number_field :price, placeholder: "0.00", in: 1.0..99999 %>
-    </div>
+    <%if @listing.errors.any?%>
+        <div class="alert alert-error alert-dismissable fade show">
+            <h3><%=pluralize(@listing.errors.count, "error")%> prohibited this listing from being saved </h3>
+        <ul>
+            <%@listing.errors.full_messages.each do |message|%>
+            <li><%=message%></li>
+            <%end%>
+        </ul>
+    
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <%end%>
 
-    <div>
-        <%= form.number_field :quantity, placeholder: "1", in: 1..99 %>
-    </div>
 
-    <div>
-        <%= form.text_field :category_id, placeholder: "category" %>
-    </div>
+  <div class='form-group mb-3'> 
+    <%=f.label :name, class: "form-label"%>
+    <%=f.text_field :name%>
+  </div>
+  
+  <div class='form-group mb-3'> 
+    <%=f.label :price, class: "form-label"%>
+    <%=f.number_field :price, step:"0.01"%>
+  </div>
+  
+  <div class='form-group mb-3'> 
+    <%=f.label :category_id, class: "form-label"%>
+    <%=f.select :category_id, @categories.map {|c| [c.name, c.id]}, class: "form-select"%>
+  </div>
+  
+  <h5 class="mb-3 ml-2">Condition</h5>
+  <%@conditions.each do |option|%>
+    <%=f.label :condition, format_condition(option), class: "form-label mr-1" %>
+    <%=f.radio_button :condition, option, class:"mr-2"%>
+  <%end%>
 
-    <div>
-        <%= form.text_field :description, placeholder: "enter a description" %>
-    </div>
+  <h5 class="mb-3 ml-2">Features</h5>
+  <div class="form-check form-check-line mb-3 ml-2">
+    <%=f.collection_check_boxes :feature_ids, @features, :id, :name  do |b|%>
+      <%=b.label class: 'form-check-label'%>
+      <%=b.check_box class: 'form-check-line mr-2'%>
+    <%end%>
+  </div>
 
-    <div>
-        <%= form.submit%>
-    </div>
-<% end %>
+  <div class='form-group mb-3'> 
+    <%=f.label :picture, class: "form-label"%>
+    <%=f.file_field :picture, accept: "image/png,image/jpg,image/jpeg", class: "form-select"%>
+  </div>
+
+   <div class='form-group mb-3'> 
+    <%=f.label :description, class: "form-label"%>
+    <%=f.text_area :description, class: "form-control"%>
+  </div>
+
+<div class='actions'> 
+   <%=f.submit%>
+  </div>
+<%end%>
