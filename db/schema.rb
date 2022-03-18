@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_18_125518) do
+ActiveRecord::Schema.define(version: 2022_03_18_135050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,18 +55,37 @@ ActiveRecord::Schema.define(version: 2022_03_18_125518) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "category_id"
+    t.integer "condition"
+    t.bigint "user_id"
+    t.bigint "favourite_id"
+    t.bigint "order_id"
     t.index ["category_id"], name: "index_listings_on_category_id"
+    t.index ["favourite_id"], name: "index_listings_on_favourite_id"
+    t.index ["order_id"], name: "index_listings_on_order_id"
+    t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
   create_table "listings_features", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "listing_id"
+    t.bigint "feature_id"
+    t.index ["feature_id"], name: "index_listings_features_on_feature_id"
+    t.index ["listing_id"], name: "index_listings_features_on_listing_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "payment_id"
+    t.string "receipt_url"
+    t.bigint "listing_id"
+    t.bigint "buyer_id", null: false
+    t.bigint "seller_id", null: false
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
+    t.index ["listing_id"], name: "index_orders_on_listing_id"
+    t.index ["seller_id"], name: "index_orders_on_seller_id"
   end
 
   create_table "overall_averages", force: :cascade do |t|
@@ -116,4 +135,12 @@ ActiveRecord::Schema.define(version: 2022_03_18_125518) do
   add_foreign_key "favourites", "listings"
   add_foreign_key "favourites", "users"
   add_foreign_key "listings", "categories"
+  add_foreign_key "listings", "favourites"
+  add_foreign_key "listings", "orders"
+  add_foreign_key "listings", "users"
+  add_foreign_key "listings_features", "features"
+  add_foreign_key "listings_features", "listings"
+  add_foreign_key "orders", "listings"
+  add_foreign_key "orders", "users", column: "buyer_id"
+  add_foreign_key "orders", "users", column: "seller_id"
 end
