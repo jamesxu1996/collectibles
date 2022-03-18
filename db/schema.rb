@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_18_061611) do
+ActiveRecord::Schema.define(version: 2022_03_18_071930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +32,24 @@ ActiveRecord::Schema.define(version: 2022_03_18_061611) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "favourites", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "listing_id"
+    t.index ["listing_id"], name: "index_favourites_on_listing_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "name"
     t.float "price"
     t.text "description"
     t.integer "quantity"
-    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_listings_on_category_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -92,4 +102,7 @@ ActiveRecord::Schema.define(version: 2022_03_18_061611) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favourites", "listings"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "listings", "categories"
 end
