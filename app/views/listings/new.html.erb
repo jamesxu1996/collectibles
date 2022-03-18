@@ -1,28 +1,5 @@
 <h1>Create a new listing</h1>
 
-<%= form_with model: @listing do |form| %>
-    <div>
-        <%= form.text_field :name, placeholder: "name" %>
-    </div>
+<%= render "form" %>
 
-    <div>
-        <%= form.number_field :price, placeholder: "0.00", in: 1.0..99999 %>
-    </div>
-
-    <div>
-        <%= form.number_field :quantity, placeholder: "1", in: 1..99 %>
-    </div>
-
-    <div>
-        <%= form.text_field :category, placeholder: "category" %>
-    </div>
-
-    <div>
-        <%= form.text_field :description, placeholder: "enter a description" %>
-    </div>
-
-    <div>
-        <%= form.submit%>
-    </div>
-<% end %>
 <%= link_to 'Go Back', url_for(:back) %>
