@@ -1,5 +1,9 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, :current_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :current_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :set_form_vars, only: [:new, :edit]
+
 
   # GET /listings
   # shows all listings, paginates listings into increments of 10
@@ -22,12 +26,12 @@ class ListingsController < ApplicationController
   # POST /listings
   # Creates a new listing and also saves to the database. Returns a flash alert message indicating if successful or unsuccessful
   def create
-    listing = Listing.create(listing_params)
-    if listing.save
-      redirect_to listings_path(listing), notice: "Listing has been successfully created!"
+    @listing = current_user.listings.new(listing_params)
+    if @listing.save
+      redirect_to @listing, notice: "Listing has been successfully created!"
     else
-      current_listing
-      render "new", alert: "Listing not created!"
+      set_form_vars
+      render "new", alert: "Listing not created. Please enter all fields"
     end
   end
 
@@ -42,10 +46,10 @@ class ListingsController < ApplicationController
   def update
     @listing.update(listing_params)
     if @listing.save
-      redirect_to listings_path(@listing), notice: "Listing has been successfully updated!"
+      redirect_to @listing, notice: "Listing has been successfully updated!"
     else
-      current_listing
-      render "edit", alert: "Listing not updated!"
+      set_form_vars
+      render "edit", alert: "Listing not updated. Please enter all fields."
     end
   end
 
@@ -60,12 +64,18 @@ class ListingsController < ApplicationController
 
   #whitelisting parameters 
   def listing_params
-    params.require(:listing).permit(:name, :price, :category_id, :description, :quantity)
+    params.require(:listing).permit(:name, :price, :category_id, :description, :quantity, :condition, :picture, feature_ids:[])
   end
 
   #set listing search callback to avoid multiple search calls for controller actions
   def current_listing
     @listing = Listing.find(params[:id])
+  end
+
+  def authorize_user
+    if @listing.user_id != current_user.id
+      redirect_to listings_path, alert: "You do not have permission"
+    end
   end
 
   #set form variables to avoid multiple search calls
