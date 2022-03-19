@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Devise gem for user authentication
 gem 'devise'
+gem "stripe", "~> 5.45"
+gem "aws-sdk-s3", "~> 1.113"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -65,6 +67,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "stripe", "~> 5.45"
 
-gem "aws-sdk-s3", "~> 1.113"
