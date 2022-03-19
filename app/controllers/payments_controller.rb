@@ -15,7 +15,7 @@ class PaymentsController < ApplicationController
             customer_email:current_user && current_user.email, 
             line_items: [
                 {
-                    name: @listing.title,
+                    name: @listing.name,
                     description: @listing.description,
                     amount: @listing.price, 
                     currency: 'aud',
