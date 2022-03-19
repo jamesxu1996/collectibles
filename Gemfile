@@ -50,7 +50,7 @@ group :development do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'ratyrate'
-  gem 'Kaminari'
+  gem 'kaminari'
   gem 'activerecord-reset-pk-sequence'
 end
 
