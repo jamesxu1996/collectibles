@@ -23,7 +23,10 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'rails-controller-testing'
+gem 'ratyrate'
+gem 'kaminari'
+gem 'activerecord-reset-pk-sequence'
 # Use Devise gem for user authentication
 gem 'devise'
 gem "stripe", "~> 5.45"
@@ -50,10 +53,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'rspec-rails'
-  gem 'rails-controller-testing'
-  gem 'ratyrate'
-  gem 'kaminari'
-  gem 'activerecord-reset-pk-sequence'
+
 end
 
 group :test do
