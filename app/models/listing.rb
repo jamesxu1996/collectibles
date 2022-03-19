@@ -4,10 +4,11 @@ class Listing < ApplicationRecord
     has_many :favourites
     has_many :listings_features, dependent: :destroy
     has_many :features, through: :listings_features
-
+    has_one_attached :picture
 
     # sets conditions new, almost new, used, well loved
     enum condition: {brand_new: 1, almost_new: 2, used: 3, well_loved: 4}
+
 
     # data validations presence, name length, price numericality, description length
     validates :name, presence: true, length: {minimum: 3}
