@@ -5,4 +5,6 @@
 <p><%= @listing.description %></p>
 
 
-<%= link_to 'Go Back', url_for(:back) %>
+<div>
+    <%= link_to 'Back to listings', listings_path, method: "get", class: "btn btn-outline-primary btn-sm" %>
+</div>
