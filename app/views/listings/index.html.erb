@@ -1,24 +1,30 @@
 <h1>Collectibles Listings</h1>
 
+
 <%= render "listings/search_form.html.erb" %>
 
-<div class="container">
-    <% @listings.each do |listing| %>
-        <div class=row>
-            <div class="col">
-                <%= link_to listing.name, listing_path(listing) %>
-            </div>
-            <div class="col">
-                <%= link_to "Edit", edit_listing_path(listing), method: "get", class: "btn btn-outline-primary btn-sm" %>
-            </div>
-            <div class="col">
-                <%= link_to "Remove", listing_path(listing), method: "delete", data: {confirm: "Please confirm"}, class: "btn btn-outline-danger btn-sm" %>
-            </div>
-        </div>
-    <% end %>
-    <div class=row>
-        <%= link_to "Add a new listing", new_listing_path, class: "btn btn-outline-primary btn-sm" %>
-    </div>
-</div>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @listings.each do |listing| %>
+  <tr>
+    <td><%= listing.name %></td>
+    <td><%= listing.price %></td>
+    <td><%= link_to 'Show', listing %></td>
+    <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+    <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Listing', new_listing_path %>
 
 <%= paginate @listings %>
