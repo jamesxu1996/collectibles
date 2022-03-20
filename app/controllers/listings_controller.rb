@@ -63,6 +63,11 @@ class ListingsController < ApplicationController
     redirect_to listings_path, notice: "Listing has been successfully deleted!"
   end
 
+  # fetches orders when buyer_id == current_user, eager loads listings by name
+  def orders
+    params.require(:listing).permit(:name, :price, :category_id, :description, :picture, :condition, :feature_ids: [])
+  end
+
   private
 
   #whitelisting parameters 
@@ -77,7 +82,7 @@ class ListingsController < ApplicationController
 
   def authorize_user
     if @listing.user_id != current_user.id
-      redirect_to listings_path, alert: "You do not have permission"
+      redirect_to listings_path, alert: "You do not have permission without logging in"
     end
   end
 
