@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
     @q = Listing.ransack(params[:q])
     @listings = @q.result(distinct: true)
     # @listings = Listing.all
-    @listings = Kaminari.paginate_array(@listings).page(params[:page]).per(10)
+    @listings = Kaminari.paginate_array(@listings).page(params[:page]).per(5)
   end
 
   # GET /listings/1
