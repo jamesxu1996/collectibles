@@ -1,8 +1,13 @@
-<%= search_form_for @q do |f| %>
+<div class="container">
+    <div class="form-outline">
 
-    <%= f.label :name_or_description_cont %>
-    <%= f.search_field :name_or_description_cont  %>
+        <%= search_form_for @q do |f| %>
 
-    <%= f.submit "Search!"%>
+            <%= f.label :name_or_description_cont %>
+            <%= f.search_field :name_or_description_cont, class: 'form-control'  %>
 
-<% end %>
+            <%= f.submit "Search!", class: "btn btn-primary" %>
+
+        <% end %>
+    </div>
+</div>

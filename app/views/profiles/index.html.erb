@@ -1,8 +1,5 @@
-<h1>Profiles#index</h1>
+<h1 class="hero-title text-center mb-5">My Profile</h1>
 
-    <% @profiles.each do |profile| %>
-        <%= link_to profile.name, profile_path(profile) %>
-    <% end %>
 
 <div>
     <%= link_to 'purchases', purchases_path, method: "get", class: "btn btn-outline-primary btn-sm" %>
