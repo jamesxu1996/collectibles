@@ -21,42 +21,52 @@
         <%end%>
 
 <%# lists condition %>
-        <h3 class='text-muted mb-3'>Condition: <%=format_condition(@listing.condition)%></h4>
-
-<%# lists price %>    
-        <h3 class='text-muted mb-3'>Price: <%=format_price(@listing.price)%></h5>
-
-<%# lists description %>            
-        <p><%=@listing.description%></p>
-
+        <span class='badge badge-pill badge-info'>
+            <h3 class='text-muted mb-3'>Condition: <%=format_condition(@listing.condition)%></h4>
+        </span>
+<%# lists price %>   
+        <span class='badge badge-pill badge-info'>
+            <h3 class='text-muted mb-3'>Price: <%=format_price(@listing.price)%></h5>
+        </span>
+<%# lists description %>     
+        <span class='badge badge-pill badge-info'>       
+            <p><%=@listing.description%></p>
+        </span>
 <%#renders button to redirect to stripe checkout or disable button if listing is sold %>
-    <%if current_user && @listing.sold == false %>
-        <%=button_to "Buy: #{format_price(@listing.price)}", 
-        create_checkout_session_path,
-        remote: true,
-        method: :post,
-        params: {id: @listing.id},
-        class: 'btn btn-primary mb-3 pr-2',
-        data: {disable_with: "Loading..."}%>
-    <%elsif @listing.sold%>
-        <button class='btn btn-secondary' disabled>SOLD OUT</button>
-    <%else%>
-        <%=button_to "Login to buy", new_user_session_path, class: "btn btn-info"%>
-    <%end%>
+    <div class="container">
+        <%if current_user && @listing.sold == false %>
+            <div class="container">
+                <%=button_to "Buy: #{format_price(@listing.price)}", 
+                create_checkout_session_path,
+                remote: true,
+                method: :post,
+                params: {id: @listing.id},
+                class: 'btn btn-primary mb-3 pr-2',
+                data: {disable_with: "Loading..."}%>
+            </div>
+        <%elsif @listing.sold%>
+            <div class="container">
+                <button class='btn btn-secondary' disabled>SOLD OUT</button>
+            </div>
+        <%else%>
+            <div class="container">
+                <%=button_to "Login to buy", new_user_session_path, class: "btn btn-info"%>
+            </div>
+        <%end%>
 
-    <div class='container'>
-    <%if current_user && current_user.id == @listing.user_id%>
-        <div class='d-flex justify-content-equally'>
-            <%= link_to "Edit", edit_listing_path(@listing.id), class: "btn btn-warning mr-2" %>
-            <%= link_to "Delete", @listing, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+        <div class='container'>
+        <%if current_user && current_user.id == @listing.user_id%>
+            <div class='d-flex justify-content-equally'>
+                <%= link_to "Edit", edit_listing_path(@listing.id), class: "btn btn-warning mr-2" %>
+                <%= link_to "Delete", @listing, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+            </div>
+        <%end%>
         </div>
-    <%end%>
-    </div>
-    <div>
-        <%= link_to 'Back to listings', listings_path, method: "get", class: "btn btn-outline-primary btn-sm" %>
+        <div class="container">
+            <%= link_to 'Back to listings', listings_path, method: "get", class: "btn btn-outline-primary btn-sm" %>
+        </div>
     </div>
 </div>
-
 
 
 </section>
