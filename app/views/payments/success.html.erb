@@ -1,2 +1,8 @@
-<h3> Thanks for purchasing <%=@order.listing.title%>! </h3>
-<%=link_to "View Receipt", @order.receipt_url%>
+<p> Thanks for purchasing <%=@order.listing.name%> </p>
+<div>
+    <%= link_to "View receipt", @order.receipt_url, method: "get", class: "btn btn-outline-primary btn-sm" %>
+</div>
+
+<div class="nav-item">
+    <%= link_to "Back to listings", listings_path, method: "get", class: "btn btn-outline-primary btn-sm" %>
+</div>

@@ -12,7 +12,7 @@ class Listing < ApplicationRecord
 
     # data validations presence, name length, price numericality, description length
     validates :name, presence: true, length: {minimum: 3}
-    validates :price, presence: true, numericality: {only_float: true}, length: {minimum: 1}
+    validates :price, presence: true, numericality: {only_integer: true}, length: {maximum: 6}
     validates :description, presence: true, length: {maximum: 255}
 
     # sanitise data
