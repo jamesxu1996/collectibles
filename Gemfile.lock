@@ -193,7 +193,6 @@ GEM
       activerecord (>= 6.0.4)
       activesupport (>= 6.0.4)
       i18n
-    ratyrate (1.2.2.alpha)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -293,7 +292,6 @@ DEPENDENCIES
   rails (~> 6.1.4, >= 6.1.4.4)
   rails-controller-testing
   ransack
-  ratyrate
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
