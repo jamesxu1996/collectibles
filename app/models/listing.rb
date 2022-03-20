@@ -1,7 +1,6 @@
 class Listing < ApplicationRecord
     belongs_to :category
     belongs_to :user
-    has_many :favourites
     has_many :listings_features, dependent: :destroy
     has_many :features, through: :listings_features
     has_one_attached :picture

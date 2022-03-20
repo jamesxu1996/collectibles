@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_19_111107) do
+ActiveRecord::Schema.define(version: 2022_03_20_111121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,30 +43,10 @@ ActiveRecord::Schema.define(version: 2022_03_19_111107) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "average_caches", force: :cascade do |t|
-    t.bigint "rater_id"
-    t.string "rateable_type"
-    t.bigint "rateable_id"
-    t.float "avg", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable"
-    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "favourites", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.bigint "listing_id"
-    t.index ["listing_id"], name: "index_favourites_on_listing_id"
-    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
   create_table "features", force: :cascade do |t|
@@ -85,11 +65,9 @@ ActiveRecord::Schema.define(version: 2022_03_19_111107) do
     t.bigint "category_id"
     t.integer "condition"
     t.bigint "user_id"
-    t.bigint "favourite_id"
     t.bigint "order_id"
     t.boolean "sold", default: false
     t.index ["category_id"], name: "index_listings_on_category_id"
-    t.index ["favourite_id"], name: "index_listings_on_favourite_id"
     t.index ["order_id"], name: "index_listings_on_order_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
@@ -117,15 +95,6 @@ ActiveRecord::Schema.define(version: 2022_03_19_111107) do
     t.index ["seller_id"], name: "index_orders_on_seller_id"
   end
 
-  create_table "overall_averages", force: :cascade do |t|
-    t.string "rateable_type"
-    t.bigint "rateable_id"
-    t.float "overall_avg", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable"
-  end
-
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -135,18 +104,6 @@ ActiveRecord::Schema.define(version: 2022_03_19_111107) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rating_caches", force: :cascade do |t|
-    t.string "cacheable_type"
-    t.bigint "cacheable_id"
-    t.float "avg", null: false
-    t.integer "qty", null: false
-    t.string "dimension"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
-    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable"
   end
 
   create_table "users", force: :cascade do |t|
@@ -163,10 +120,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_111107) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "favourites", "listings"
-  add_foreign_key "favourites", "users"
   add_foreign_key "listings", "categories"
-  add_foreign_key "listings", "favourites"
   add_foreign_key "listings", "orders"
   add_foreign_key "listings", "users"
   add_foreign_key "listings_features", "features"
