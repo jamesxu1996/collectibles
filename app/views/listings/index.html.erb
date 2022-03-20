@@ -3,7 +3,7 @@
 
 <%= render "listings/search_form.html.erb" %>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Price</th>
@@ -15,7 +15,7 @@
 <% @listings.each do |listing| %>
   <tr>
     <td><%= listing.name %></td>
-    <td><%= listing.price %></td>
+    <td>$<%= listing.price %></td>
     <td><%= link_to 'Show', listing %></td>
     <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
     <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
