@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :profiles, :reviews, :orders, :listings
+  resources :profiles, :reviews, :listings
   root to: "home#index"
 
   post '/rate' => 'rater#create', :as => 'rate'
 
+  get "profiles/orders", to: "profiles#orders", as: "orders" 
   get "payments/success/:id", to: "payments#success", as: "payments_success"
   post "payments/webhook", to: "payments#webhook"
   post "payments", to: "payments#create_checkout_session", as: "create_checkout_session"

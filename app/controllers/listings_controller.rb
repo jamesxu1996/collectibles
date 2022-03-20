@@ -64,8 +64,8 @@ class ListingsController < ApplicationController
   end
 
   # fetches orders when buyer_id == current_user, eager loads listings by name
-  def orders
-    params.require(:listing).permit(:name, :price, :category_id, :description, :picture, :condition, :feature_ids: [])
+  def purchases
+    @list_purchases = Order.where(buyer_id: current_user.id).order("listings.name").eager_load(:listing)
   end
 
   private

@@ -3,3 +3,7 @@
     <% @profiles.each do |profile| %>
         <%= link_to profile.name, profile_path(profile) %>
     <% end %>
+
+<div>
+    <%= link_to 'orders', orders_path, method: "get", class: "btn btn-outline-primary btn-sm" %>
+</div>

@@ -17,8 +17,8 @@ class Listing < ApplicationRecord
 
     # sanitise data
     before_save :remove_whitespace
+    before_save :remove_drugs
     before_validation :convert_price_to_cents, if: :price_changed?
-
 
     private
 
@@ -26,6 +26,11 @@ class Listing < ApplicationRecord
     def remove_whitespace
         self.name = self.name.strip
         self.description = self.description.strip
+    end
+
+    def remove_drugs
+        self.name = self.name.gsub(/drug/i, 'substance')
+        self.description = self.name.gsub(/drug/i, 'substance')
     end
 
     # conversion of set price to cents
