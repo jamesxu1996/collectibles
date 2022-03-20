@@ -1,8 +1,27 @@
-<div>
-    <%@list_purchases.each do |purchase|%>
-        <div>
-            <%=purchase.listing.name%>
-            <%=format_price(purchase.listing.price)%>
-        </div>
-    <%end%>
-</div>
+<h1 class="hero-title text-center mb-5">Purchase History</h1>
+
+<%# Lists purchase history for current logged in user %>
+
+    <section class="container">
+    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+      <%@list_purchases.each do |purchase|%>
+        <div class="col mb-4">
+          <div class="card h-100">
+
+            
+            <div class="card-body">
+              <h5><%=purchase.listing.name%></h5>
+         
+               <div class='d-flex justify-content-between'>
+                <h5><%=format_price(purchase.listing.price)%></h5></div>
+                 <p>Date Purchased: <%=format_date(purchase.created_at)%></p>
+                
+                    <%=link_to "Listing", listing_path(purchase.listing.id), class:"btn btn-primary"%>
+                    <%=link_to "Receipt", purchase.receipt_url, class:"btn btn-outline-primary"%>
+    </div>
+        </div>  
+          </div>
+         
+      <%end%>
+      </div>
+  </section>
