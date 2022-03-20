@@ -24,7 +24,6 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'rails-controller-testing'
-gem 'ratyrate'
 gem 'kaminari'
 gem 'activerecord-reset-pk-sequence'
 # Use Devise gem for user authentication
