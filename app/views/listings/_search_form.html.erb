@@ -1,0 +1,11 @@
+<%= search_form_for @q do |f| %>
+
+    <%= f.label :name_cont %>
+    <%= f.search_field :name_cont %>
+
+    <%= f.label :description_cont %>
+    <%= f.search_field :description_cont%>
+
+    <%= f.submit "Search!"%>
+
+<% end %>

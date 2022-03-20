@@ -31,6 +31,8 @@ gem 'activerecord-reset-pk-sequence'
 gem 'devise'
 gem "stripe", "~> 5.45"
 gem "aws-sdk-s3", "~> 1.113"
+gem 'ransack'
+gem 'faker'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

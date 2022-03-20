@@ -7,8 +7,10 @@ class ListingsController < ApplicationController
 
   # GET /listings
   # shows all listings, paginates listings into increments of 10
+  # sets up ransack gem; allows for search filtering of descriptions
   def index
-    @listings = Listing.all
+    @q = Listing.ransack(params[:q])
+    @listings = @q.result(distinct: true)
     @listings = Kaminari.paginate_array(@listings).page(params[:page]).per(10)
   end
 
