@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   post '/rate' => 'rater#create', :as => 'rate'
 
-  get "purchases", to: "listings#purchases", as: "purchases" 
+  get "purchases", to: "profiles#purchases", as: "purchases" 
   get "payments/success/:id", to: "payments#success", as: "payments_success"
   post "payments/webhook", to: "payments#webhook"
   post "payments", to: "payments#create_checkout_session", as: "create_checkout_session"
