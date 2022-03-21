@@ -61,10 +61,10 @@ ActiveRecord::Schema.define(version: 2022_03_21_155345) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id"
     t.boolean "sold", default: false
     t.bigint "user_id"
     t.integer "condition"
-    t.bigint "category_id"
     t.index ["category_id"], name: "index_listings_on_category_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end

@@ -50,6 +50,11 @@ class PaymentsController < ApplicationController
             return
         end
         
+        puts "***********"
+        pp event
+        puts "************"
+
+
         #Tracks information about the listing that was purchased and update listing to sold and create order in orders table
         payment_intent_id = event.data.object.payment_intent
         payment = Stripe::PaymentIntent.retrieve(payment_intent_id)
