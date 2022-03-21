@@ -10,6 +10,7 @@ module ListingsHelper
         "$#{price/100.0}"
     end
 
+    #formats date
     def format_date(date)
         format = date.in_time_zone("Australia/Melbourne")
         format.strftime("%d %b, %Y")
