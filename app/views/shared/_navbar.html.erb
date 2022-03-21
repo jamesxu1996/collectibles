@@ -14,9 +14,6 @@
             <li class="nav-item">
                 <%= link_to "Listings", listings_path, class:"nav-item nav-link"%>
             </li>
-            <li class="nav-item">
-                <%= link_to "My Profile", profiles_path, class:"nav-item nav-link"%>
-            </li>
             <%if user_signed_in?%>
                 <%= link_to "Sign Out", destroy_user_session_path, method: :get, class: "nav-item nav-link"%>
             <%else%>

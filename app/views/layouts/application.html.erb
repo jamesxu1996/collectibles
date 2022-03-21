@@ -12,6 +12,7 @@
   </head>
 
   <body>
+  <%#messages that indicate successful sign in or sign out%>
     <% flash.each do |key, message| %>
       <div class="alert alert-<%= flash_class(key) %> alert-dismissible fade show" role="alert">
         <%= message %>
@@ -19,6 +20,7 @@
         </button>
       </div>
     <% end %>
+  <%#renders navbar always%>
     <%= render "shared/navbar" %>
     <%= yield %>
   </body>

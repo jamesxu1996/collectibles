@@ -24,3 +24,10 @@
 <%= link_to 'New Listing', new_listing_path, class: "btn btn-outline-primary btn-sm" %>
 
 <%= paginate @listings %>
+
+<div class="container">
+    <h3>View your purchase history here!</h3>
+    <div class="container">
+        <%= link_to 'purchases', purchases_path, method: "get", class: "btn btn-outline-primary btn-sm" %>
+    </div>
+</div>
