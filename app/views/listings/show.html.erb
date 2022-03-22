@@ -17,19 +17,19 @@
     
 <%# renders badge-pill display of features%>
         <%@listing.features.each do |feature|%>
-            <span class='badge badge-pill badge-info'><%=feature.name%></span>
+            <span class='badge rounded-pill bg-primary'><%=feature.name%></span>
         <%end%>
 
 <%# lists condition %>
-        <span class='badge badge-pill badge-info'>
-            <h3 class='text-muted mb-3'>Condition: <%=format_condition(@listing.condition)%></h4>
+        <span class='badge rounded-pill bg-primary'>
+            <p>Condition: <%=format_condition(@listing.condition)%></p>
         </span>
 <%# lists price %>   
-        <span class='badge badge-pill badge-info'>
+        <span class='badge rounded-pill bg-light'>
             <h3 class='text-muted mb-3'>Price: <%=format_price(@listing.price)%></h5>
         </span>
 <%# lists description %>     
-        <span class='badge badge-pill badge-info'>       
+        <span>       
             <p><%=@listing.description%></p>
         </span>
 <%#renders button to redirect to stripe checkout or disable button if listing is sold %>

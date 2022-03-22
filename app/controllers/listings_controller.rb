@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  #set before actions
   before_action :authenticate_user!, except: [:index, :show]
   before_action :current_listing, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user, only: [:edit, :update, :destroy]
@@ -6,7 +7,7 @@ class ListingsController < ApplicationController
 
 
   # GET /listings
-  # shows all listings, paginates listings into increments of 10
+  # shows all listings, paginates listings into increments of 5
   # sets up ransack gem; allows for search filtering of descriptions
   def index
     @q = Listing.ransack(params[:q])
@@ -35,11 +36,6 @@ class ListingsController < ApplicationController
       set_form_vars
       render "new", alert: "Listing not created. Please enter all fields"
     end
-  end
-
-  # GET /listings/1/edit
-  def edit
-    
   end
 
   # PATCH /listings/1
@@ -71,7 +67,7 @@ class ListingsController < ApplicationController
 
   #whitelisting parameters 
   def listing_params
-    params.require(:listing).permit(:name, :price, :category_id, :description, :quantity, :condition, :picture, feature_ids:[])
+    params.require(:listing).permit(:name, :price, :category_id, :description, :quantity, :condition, :picture, feature_ids: [])
   end
 
   #set listing search callback to avoid multiple search calls for controller actions

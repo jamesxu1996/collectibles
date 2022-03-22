@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "payments/webhook", to: "payments#webhook"
   post "payments", to: "payments#create_checkout_session", as: "create_checkout_session"
 
+
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
