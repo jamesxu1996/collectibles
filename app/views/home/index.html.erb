@@ -1,0 +1,25 @@
+<div class="d-flex min-vh-100" lc-helper="background" style="background:url(https://images.unsplash.com/photo-1466584241662-8cb021032c1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80)  center / cover no-repeat; background-color:#444; background-blend-mode: overlay;">
+	<div class="align-self-center text-center text-light col-md-8 offset-md-2">
+    	<div class="lc-block mb-4">
+			<div editable="rich">
+				<h1 class="display-1 fw-bolder">The Place To Be For Collectors.</h1>
+			</div>
+		</div>
+
+		<div class="lc-block">
+			<div editable="rich">
+				<p class="lead">Find what you like, when you like.</p>
+
+				<p class="lead">Start your collection now.</p>
+
+		<div class="container">
+  			<div class="form-outline">
+				<%=search_form_for @q do |f|%>
+				<%= f.search_field :name_or_description_cont, class: 'form-control' %>
+				<%= f.submit "Search!", class: "btn btn-primary" %>
+				<%end%>
+        
+			</div>
+		</div>
+	</div>
+</div>
