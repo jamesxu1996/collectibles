@@ -22,11 +22,11 @@ The collectibles app allows users to register and sign in with a unique profile.
 
 ### Screenshots
 Home
-![screenshots](app/assets/images/home.png "home")
+![screenshots](app/assets/images/homepage.png "home")
 Listings
-![screenshots](app/assets/images/listings.png "listings")
+![screenshots](app/assets/images/listingspage.png "listings")
 Show Page
-![screenshots](app/assets/images/show.png "show")
+![screenshots](app/assets/images/showpage.png "show")
 
 ### Target audience
 The target audience for the Collectibles marketplace application are people who do not want to use a general marketplace such as Amazon or eBay and want to facilitate transactions over a more niche marketbase. Anything from rare cards, watches, cameras, antiques; buyers and sellers will be able to transact and discover items that they enjoy collecting rather than a mass-consumer marketplace where there things are sold in large quantities or where rarer objects are not normally posted. This also makes it easier on the buyer to find rare items to buy or the seller to find buyers for their niche items.
@@ -85,12 +85,20 @@ The app utilised and relies upon stripe to make transactions. Stripe will also i
 
 
 # Describe your projects models in terms of the relationships (active record associations) they have with each other
+Listing model is the model within the app that shares the most associations with others. First, it has a belongs_to association with the User and Category models; User and Category share a has_many association with Listing. This indicates a one-to-many relationship between them which infers that a listing can only have one user and category whereas users and categories can exist in many listings.
 
+Listing has a has_one_attached association with picture (Active Storage). This infers a one-to-one relationship where each listing can only have one picture attached.
 
+Listing has a has_one association with Order. Order has a belongs_to association with Listing. This infers that there is a one-to-one relationship. This means that a listing may have one order and order can have one listing only. 
+
+Listing also has two has_many associations with listings_features and features. Listings also has a has_many through listings features, indicating that listings features is a join table. In conclusion, we can say that listings can have many features through the listing features model.
 
 # Discuss the database relations to be implemented in your application
+Database relations are indicated by tables, keys(primary and foreign) and diagrams. When discussing database relations, normalisation must also be mentioned. Normalisation is desirable so that the database minimises data duplication and prevents errors in logic or inefficient querying. If normal forms are followed, this will be acheived. Ensuring that tables only hold single attributes and do not act to serve multiple purposes (e.g. a table that records personal user data but also records how many listings are made) will help to reach normalisation. If we look at the final ERD provided above, we can see how each table has a title for a single purpose.
 
+Users table contains information about buyers/sellers. The primary key will be the ID (as is the case for most tables in the ERD) and maps to the Orders table. The Orders table will hold the User_ID as a foreign key. The Orders table will then have its own ID as the PK. The Orders table will hold information about listing/purchases. Orders table will have the listing_id as the FK and Listing will the have its own ID as the PK. Categories table will have data about the different categories (which have been seeded in this instance), it will have its own ID as the PK. Categories table will link with Listings with Listings have category_id as the FK. Features table holds information about the different features seeded for a listing. This will link with listing_features table through its PK (features_id) and it will have a FK of listing_id. 
 
+In conclusion, the tables mentioned above will form the main basis of our app's MVC structure. Each table has its own purpose and links to other tables through their own primary keys and foreign keys. These work together to link data in the right places and to reach a normal form.
 
 # Provide your database schema design
 
