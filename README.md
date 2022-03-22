@@ -1,6 +1,6 @@
 # Rails Project App - Collectibles Marketplace
 
-**Heroku Deployment Link:**
+**Heroku Deployment Link:** https://collectibles-app.herokuapp.com/
 
 **Github Repo Link:** https://github.com/jamesxu1996/collectibles
 
