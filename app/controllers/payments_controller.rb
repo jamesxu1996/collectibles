@@ -49,10 +49,6 @@ class PaymentsController < ApplicationController
             render json: {error: "Bad request"}, status: 422
             return
         end
-        
-        puts "***********"
-        pp event
-        puts "************"
 
 
         #Tracks information about the listing that was purchased and update listing to sold and create order in orders table

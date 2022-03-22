@@ -67,7 +67,7 @@ class ListingsController < ApplicationController
 
   #whitelisting parameters 
   def listing_params
-    params.require(:listing).permit(:name, :price, :category_id, :description, :quantity, :condition, :picture, feature_ids: [])
+    params.require(:listing).permit(:name, :price, :category_id, :description, :condition, :picture, feature_ids: [])
   end
 
   #set listing search callback to avoid multiple search calls for controller actions
