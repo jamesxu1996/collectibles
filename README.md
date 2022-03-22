@@ -21,8 +21,11 @@ The collectibles app allows users to register and sign in with a unique profile.
 ![sitemap](app/assets/images/sitemap_collectibles.png "sitemap")
 
 ### Screenshots
+Home
 ![screenshots](app/assets/images/home.png "home")
+Listings
 ![screenshots](app/assets/images/listings.png "listings")
+Show Page
 ![screenshots](app/assets/images/show.png "show")
 
 ### Target audience
@@ -44,22 +47,37 @@ HTML, CSS, Ruby, Ruby on Rails, Javascript, AWS S3(image storage), Heroku(deploy
 - "As a user, I want to be able to change my mind at the checkout if I have second thoughts"
 
 # Wireframes for your app
+Add/Edit
 ![wireframes](app/assets/images/add_edit_item.png "add_edit_item")
+Home
 ![wireframes](app/assets/images/Home.png "home")
+Profile
 ![wireframes](app/assets/images/profile_screen.png "profile")
+Search
 ![wireframes](app/assets/images/Search_result.png "search")
+Register/Login
 ![wireframes](app/assets/images/register_login.png "register_login")
+Show Item
 ![wireframes](app/assets/images/show_item.png "show")
+Stripe Payment
 ![wireframes](app/assets/images/Stripe_payment.png "stripe")
+Success
 ![wireframes](app/assets/images/successful_thank_you_screen.png "success")
 
 # An ERD for your app
+Proposed ERD
 ![wireframes](app/assets/images/ERD_proposed.png "erd_proposed")
+Modified ERD
+![wireframes](app/assets/images/ERD_modified.png "erd_modifiedl")
+Final ERD
 ![wireframes](app/assets/images/ERD_final.png "erd_final")
 
-
 # Explain the different high-level components (abstractions) in your app
-The collectible marketplace app is built with the MVC (model views controller) model in mind. These models are inherited from the ActiveRecord class (which is itself inherited from the ApplicationRecord). This allows querying/manipulation of data from our PostreSQL database easier without needing to specifically write complex SQL queries. The ORM handles these queries for us so devlopment of the app is made easier. Controllers, as previously mentioned, are inherited from ApplicationController(which is inherited from ActiveController) and thus allows us as developers to define methods, variables (instance variables) to query data from the Models. Basically, this makes CRUD operation implementation easier as it seperates concerns and thus allows us to set actions to complete before/after. Views are inherited from ActionView; this allows our application to have more complex front-end pages by letting HTML mix with ruby/other languages e.g javascript. This means logic can be passed on the front end whilst also allowing the power of styling from HTML and CSS (bootstrap). Partials can be utilised within views (files starting with _) to further break down front-end components such as forms, navbars, headers etc.
+The collectible marketplace app is built with the MVC (model views controller) model in mind. These models are inherited from the ActiveRecord class (which is itself inherited from the ApplicationRecord). This allows querying/manipulation of data from our PostreSQL database easier without needing to specifically write complex SQL queries. The ORM handles these queries for us so devlopment of the app is made easier. 
+
+Controllers, as previously mentioned, are inherited from ApplicationController(which is inherited from ActiveController) and thus allows us as developers to define methods, variables (instance variables) to query data from the Models. Basically, this makes CRUD operation implementation easier as it seperates concerns and thus allows us to set actions to complete before/after. 
+
+Views are inherited from ActionView; this allows our application to have more complex front-end pages by letting HTML mix with ruby/other languages e.g javascript. This means logic can be passed on the front end whilst also allowing the power of styling from HTML and CSS (bootstrap). Partials can be utilised within views (files starting with _) to further break down front-end components such as forms, navbars, headers etc. This makes the code more DRY.
 
 
 # Detail any third party services that your app will use
