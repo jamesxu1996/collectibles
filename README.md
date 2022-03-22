@@ -65,6 +65,6 @@ Tasks for the project were managed and allocated using Trello. The board was set
 
 Pictures of the board in progress are shown below:
 
-![trello board](app/asset/images/trello_1.png "trello board")
-![trello board](app/asset/images/trello_2.png "trello board")
-![trello board](app/asset/images/trello_3.png "trello board")
+![trello board](app/assets/images/Trello_1.png "trello board")
+![trello board](app/assets/images/Trello_2.png "trello board")
+![trello board](app/assets/images/Trello_3.png "trello board")
